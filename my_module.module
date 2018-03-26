@@ -115,9 +115,36 @@ function _test() {
   $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader("Xlsx");
   $spreadsheet = $reader->load($inputFileName);
 
-  print '<pre>'; print_r("spreadsheet"); print '</pre>';
-  print '<pre>'; print_r($spreadsheet); print '</pre>';
-  return "hello";exit;
+
+
+
+
+// ======= Array form.
+
+//  Get worksheet dimensions
+$sheet = $spreadsheet->getSheet(0);
+
+$highestRow = $sheet->getHighestRow();
+
+$highestColumn = $sheet->getHighestColumn();
+
+//  Loop through each row of the worksheet in turn
+for ($row = 1; $row <= $highestRow; $row++){
+    //  Read a row of data into an array
+    $rowData = $sheet->rangeToArray('A' . $row . ':' . $highestColumn . $row,
+                                    NULL,
+                                    TRUE,
+                                    FALSE);
+    //  Insert row data array into your database of choice here
+
+  //   print '<pre>'; print_r("row data"); print '</pre>';
+  // print '<pre>'; print_r($rowData); print '</pre>';
+
+}
+
+
+
+// Save in my module folder ===========
 
   $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, "Xlsx");
   $writer->save($inputFileName1);
@@ -127,7 +154,7 @@ function _test() {
 
 
 
-
+// DOwnload code ==========================
 
 // $writer->save('results.xlsx');
 header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
