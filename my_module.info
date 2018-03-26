@@ -1,0 +1,13 @@
+name = My Module
+description = "test custom module"
+core = 7.x
+project = "my_module"
+
+core = 7.x
+package = "Custom"
+version = "7.x-2.x-dev"
+core = "7.x"
+datestamp = "1394641712"
+
+
+

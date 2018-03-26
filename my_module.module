@@ -1,0 +1,257 @@
+<?php
+
+
+// composer require phpoffice/phpspreadsheet
+
+include 'vendor/autoload.php';
+use PhpOffice\PhpSpreadsheet\Spreadsheet;
+use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+use PhpOffice\PhpSpreadsheet\IOFactory;
+use PhpOffice\PhpSpreadsheet\Reader\Csv;
+
+
+function my_module_menu() {
+
+  $items = array();
+  $items['phpspreadsheet'] = array(
+    'page callback' => '_test',
+    'access callback' => TRUE,
+    'type' => MENU_CALLBACK,
+  );
+
+  return $items;
+}
+
+function _test() {
+
+  // require 'vendor/autoload.php';
+
+  // use PhpOffice\PhpSpreadsheet\Spreadsheet;
+  // use PhpOffice\PhpSpreadsheet\Writer\Xlsx;
+
+
+
+  // // $inputFileName = drupal_get_path('module', 'my_module') .'/hello.xlsx';
+  // $inputFileName = drupal_get_path('module', 'my_module') .'/world.xlsx';
+  // // $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileName);
+  // $reader = IOFactory::load($inputFileName);
+  // print '<pre>'; print_r("reader"); print '</pre>';
+  // print '<pre>'; print_r($reader); print '</pre>';
+  // dpm("reader");
+  // dpm($reader);
+
+
+
+// Read.2 -  TEST ==========
+
+//   $inputFileName = drupal_get_path('module', 'my_module') .'/hello.xlsx';
+//   $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+// $reader->setReadDataOnly(true);
+
+// $spreadsheet = new Spreadsheet();
+// $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, "Xlsx");
+// $writer->save("05featuredemo.xlsx");
+
+// $spreadsheet = $reader->load("05featuredemo.xlsx");
+
+
+
+
+  // ==========================================
+  // $spreadsheet = new Spreadsheet();
+  // $sheet = $spreadsheet->getActiveSheet();
+  // $sheet->setCellValue('A1', 'Hello World - Testing!');
+
+
+
+
+
+
+
+
+
+// $zip = new ZipArchive();
+// if ($zip->open($tmpPath, ZIPARCHIVE::CREATE) !== true) {
+//         return false;
+//     }
+    // $rDir = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($path));
+    // foreach ($rDir as $key => $value) {
+    //     try{
+    //         $zip->addFile(realpath($key), $key);
+    //     } catch (Exception $err) {
+    //         println("ERROR!! Could not add ".$key."!\t".$err->getMessage());
+    //     }
+    // }
+    // var_dump($zip);
+    // $zip->close();
+    // return true;
+
+
+
+
+// 1. =============================
+//   $spreadsheet = new Spreadsheet();
+
+// $writer = new Xlsx($spreadsheet);
+// // We'll be outputting an excel file
+// header('Content-type: application/vnd.ms-excel');
+
+// // It will be called file.xls
+// header('Content-Disposition: attachment; filename="world.xls"');
+
+
+// READ and Write ==========================
+
+
+
+
+  $inputFileName = drupal_get_path('module', 'my_module') .'/hello1.xlsx';
+  $inputFileName1 = drupal_get_path('module', 'my_module') .'/world1.xlsx';
+  // $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileName);
+  // $reader = IOFactory::load($inputFileName);
+
+
+
+  $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader("Xlsx");
+  $spreadsheet = $reader->load($inputFileName);
+
+  print '<pre>'; print_r("spreadsheet"); print '</pre>';
+  print '<pre>'; print_r($spreadsheet); print '</pre>';
+  return "hello";exit;
+
+  $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, "Xlsx");
+  $writer->save($inputFileName1);
+
+
+
+
+
+
+
+
+// $writer->save('results.xlsx');
+header("Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+header("Content-Disposition: attachment; filename=\"world.xlsx\"");
+header("Cache-Control: max-age=0");
+
+
+
+$writer->save("php://output");
+
+
+
+//   $spreadsheet = new Spreadsheet();
+
+// $writer = new Xlsx($spreadsheet);
+// // We'll be outputting an excel file
+// header('Content-type: application/vnd.ms-excel');
+
+// // It will be called file.xls
+// header('Content-Disposition: attachment; filename="world.xls"');
+
+
+
+
+
+//     // $spreadsheet = new Spreadsheet();
+//    $writer = new Xlsx($spreadsheet);
+
+//   // $spreadsheet = $reader->load($inputFileName);
+
+// // $writer = new Xlsx($spreadsheet);
+
+// // We'll be outputting an excel file
+// header('Content-type: application/vnd.ms-excel');
+
+// // It will be called file.xls
+// header('Content-Disposition: attachment; filename="hello.xlsx"');
+
+
+
+
+
+  // print '<pre>'; print_r("spreadsheet"); print '</pre>';
+  // print '<pre>'; print_r($spreadsheet); print '</pre>';
+
+
+  // print '<pre>'; print_r("reader"); print '</pre>';
+  // print '<pre>'; print_r($reader); print '</pre>';
+  // dpm("reader");
+  // dpm($reader);
+
+
+
+
+  // $inputFileName = drupal_get_path('module', 'my_module') .'/world.xlsx';
+
+
+
+  // $reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputFileName);
+  // $reader = IOFactory::load($inputFileName);
+
+
+
+
+  // $spreadsheet = IOFactory::load($inputFileName);
+  // $reader = IOFactory::load($inputFileName);
+
+  // $reader = IOFactory::createReaderForFile($inputFileName);
+  // $reader->setReadDataOnly(true);
+// $reader->load('hello.xlsx');
+
+
+  // print '<pre>'; print_r("reader"); print '</pre>';
+  // print '<pre>'; print_r($reader); print '</pre>';
+  // dpm("reader");
+  // dpm($reader);
+
+
+// $writer = new \PhpOffice\PhpSpreadsheet\Writer\Csv($spreadsheet);
+// $writer->save("05featuredemo.csv");
+
+// $writer = new \PhpOffice\PhpSpreadsheet\Writer\Csv($spreadsheet);
+// $writer->setDelimiter(';');
+// $writer->setEnclosure('');
+// $writer->setLineEnding("\r\n");
+// $writer->setSheetIndex(0);
+
+// $writer->save("05featuredemo.csv");
+
+
+
+
+// 1.1 =============================
+
+//   $spreadsheet = new Spreadsheet();
+//   $sheet = $spreadsheet->getActiveSheet($reader);
+
+
+//   // $sheet->setCellValue($reader);
+
+
+//   $writer = new Xlsx($spreadsheet);
+// // We'll be outputting an excel file
+// header('Content-type: application/vnd.ms-excel');
+
+// // It will be called file.xls
+// header('Content-Disposition: attachment; filename="world.xls"');
+
+// // Write file to the browser
+// // $objWriter->save('php://output');
+
+
+
+
+
+
+// 2. =============================
+
+
+
+  // $writer = new Xlsx($spreadsheet);
+
+  // $writer->save(drupal_get_path('module', 'my_module') .'/world.xlsx');
+
+
+  return "Hello";
+}
